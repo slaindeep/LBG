@@ -1,75 +1,87 @@
-body {
-  font-family: Arial, sans-serif;
+/* App.css */
+
+body, html {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-header {
-  background-color: #0073e6;
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Ensure video is behind other elements */
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* Ensure content is above the video */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure content covers the full height of the viewport */
+  text-align: center;
+}
+
+@keyframes moveToCenter {
+  0% {
+    opacity: 0;
+    transform: translate(100vw, -100vh) scale(0.5);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.sun-ray-text {
+  font-size: 3em;
+  color: gold;
+  animation: moveToCenter 4s ease-out forwards;
+}
+
+.sun-ray-text .coming-soon {
+  font-size: 0.7em; /* Smaller than the Luminous Bluewaters Group text */
   color: white;
-  padding: 20px 0;
+  display: block;
+  margin-bottom: 10px;
 }
 
-header h1 {
+nav {
+  position: absolute;
+  top: 20px;
+  width: 100%;
   text-align: center;
 }
 
 nav ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 nav ul li a {
-  color: white;
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
-.container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
-}
-
-.hero {
-  background-color: #333;
-  color: white;
-  padding: 60px 0;
-  text-align: center;
-}
-
-.hero h2 {
-  margin: 0;
-}
-
-.hero p {
-  font-size: 1.2em;
-}
-
-.hero .btn {
-  background-color: #0073e6;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-footer {
-  padding: 20px 0;
-  background-color: white;
-  margin-top: 20px;
-}
-
-footer p {
-  text-align: center;
-  font-size: 0.9em;
-  color: #777;
+nav ul li a:hover {
+  color: gold;
 }
